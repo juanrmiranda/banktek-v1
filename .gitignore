@@ -1,0 +1,108 @@
+#############################
+# OS / Editor
+#############################
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+
+#############################
+# Environment variables
+#############################
+
+.env
+.env.*
+!.env.example
+
+#############################
+# Logs
+#############################
+
+logs/
+*.log
+
+#############################
+# CodeIgniter logs
+#############################
+
+application/logs/*
+!application/logs/index.html
+
+#############################
+# CodeIgniter cache
+#############################
+
+application/cache/*
+!application/cache/index.html
+
+#############################
+# Sessions (si cambias sess_save_path)
+#############################
+
+application/sessions/*
+
+#############################
+# Uploads / documentos
+#############################
+
+uploads/*
+!uploads/.gitkeep
+
+documents/*
+!documents/.gitkeep
+
+#############################
+# Docker
+#############################
+
+docker/postgres/data/
+docker/postgres/pgdata/
+
+#############################
+# Local database dumps
+#############################
+
+*.sql
+*.dump
+*.backup
+
+#############################
+# Node (si luego usas microservicios)
+#############################
+
+node_modules/
+npm-debug.log
+yarn-error.log
+
+#############################
+# Composer (si luego agregas)
+#############################
+
+vendor/
+
+#############################
+# IDE
+#############################
+
+.vscode/
+.idea/
+
+#############################
+# Build / cache
+#############################
+
+.cache/
+tmp/
+temp/
+
+#############################
+# Misc
+#############################
+
+*.pid
+*.seed
+*.pid.lock

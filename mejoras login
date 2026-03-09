@@ -1,0 +1,195 @@
+2) Cambio mínimo en tu login
+
+En el punto donde validas usuario/clave correctamente, agrega esto antes o justo al guardar datos de sesión:
+
+$this->session->sess_regenerate(TRUE);
+
+Luego guarda solo lo necesario en sesión. Algo como:
+
+$this->session->set_userdata([
+    'user_id'   => $usuario->id,
+    'username'  => $usuario->usuario,
+    'role_id'   => $usuario->role_id,
+    'logged_in' => TRUE
+]);
+Qué evitar en sesión
+
+No metas cosas como:
+
+menú completo
+
+permisos completos serializados
+
+datos sensibles innecesarios
+
+objetos enteros del usuario
+
+Quédate con lo mínimo.
+
+3) Auditoría mínima de logins
+Tabla PostgreSQL
+
+Te dejo una tabla sencilla y útil:
+
+CREATE TABLE IF NOT EXISTS seguridad_login_auditoria (
+    auditoria_id bigserial PRIMARY KEY,
+    user_id bigint NULL,
+    username varchar(100) NOT NULL,
+    session_id varchar(128) NULL,
+    ip_address varchar(45) NULL,
+    user_agent text NULL,
+    fecha_login timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    fecha_logout timestamp NULL,
+    estado varchar(20) NOT NULL DEFAULT 'ACTIVA',
+    motivo varchar(50) NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_seg_login_aud_username
+    ON seguridad_login_auditoria (username);
+
+CREATE INDEX IF NOT EXISTS idx_seg_login_aud_fecha_login
+    ON seguridad_login_auditoria (fecha_login);
+
+CREATE INDEX IF NOT EXISTS idx_seg_login_aud_estado
+    ON seguridad_login_auditoria (estado);
+
+CREATE INDEX IF NOT EXISTS idx_seg_login_aud_session_id
+    ON seguridad_login_auditoria (session_id);
+4) Insertar auditoría en login exitoso
+
+En tu lógica de login, después de autenticar y después de regenerar sesión, inserta esto:
+
+$this->db->insert('seguridad_login_auditoria', [
+    'user_id'    => $usuario->id,
+    'username'   => $usuario->usuario,
+    'session_id' => session_id(),
+    'ip_address' => $this->input->ip_address(),
+    'user_agent' => substr((string)$this->input->user_agent(), 0, 1000),
+    'estado'     => 'ACTIVA',
+    'motivo'     => 'LOGIN'
+]);
+5) Actualizar auditoría en logout
+
+En tu método de logout, antes de destruir la sesión:
+
+$this->db->where('session_id', session_id());
+$this->db->where('estado', 'ACTIVA');
+$this->db->update('seguridad_login_auditoria', [
+    'fecha_logout' => date('Y-m-d H:i:s'),
+    'estado'       => 'CERRADA',
+    'motivo'       => 'LOGOUT'
+]);
+
+$this->session->sess_destroy();
+redirect('login');
+6) Si quieres registrar login fallido también
+
+Esto vale bastante y casi no toca tu código.
+
+Cuando falle autenticación:
+
+$this->db->insert('seguridad_login_auditoria', [
+    'user_id'    => NULL,
+    'username'   => $this->input->post('username', TRUE),
+    'session_id' => NULL,
+    'ip_address' => $this->input->ip_address(),
+    'user_agent' => substr((string)$this->input->user_agent(), 0, 1000),
+    'estado'     => 'FALLIDO',
+    'motivo'     => 'LOGIN_FALLIDO'
+]);
+Estados sugeridos
+
+ACTIVA
+
+CERRADA
+
+FALLIDO
+
+Con eso basta por ahora.
+
+7) Recomendación práctica de timeout
+
+Si no quieres incomodar mucho al usuario:
+
+$config['sess_expiration'] = 3600;
+
+Si quieres más estricto:
+
+$config['sess_expiration'] = 1800;
+
+Para un core financiero interno, yo dejaría 1800 o 3600, no más.
+
+8) Resumen de cambios mínimos que sí debes hacer
+En config.php
+
+cookie_httponly = TRUE
+
+cookie_samesite = 'Lax'
+
+cookie_secure = FALSE por ahora
+
+sess_time_to_update = 300
+
+sess_regenerate_destroy = TRUE
+
+sess_expiration = 1800 o 3600
+
+sess_cookie_name = 'banktek_session'
+
+En login
+
+sess_regenerate(TRUE)
+
+guardar solo datos mínimos
+
+insertar auditoría de login exitoso
+
+opcional: insertar auditoría de login fallido
+
+En logout
+
+actualizar auditoría
+
+destruir sesión
+
+9) Flujo final que tendrás
+Login exitoso
+
+validas credenciales
+
+regeneras ID de sesión
+
+guardas sesión mínima
+
+insertas auditoría
+
+rediriges
+
+Login fallido
+
+registras intento fallido
+
+muestras mensaje
+
+Logout
+
+cierras auditoría
+
+destruyes sesión
+
+rediriges a login
+
+10) Qué mejora logras con esto
+
+Sin rediseñar tu framework, ya tendrás:
+
+cookies más seguras
+
+menor riesgo de session fixation
+
+expiración controlada
+
+trazabilidad de accesos
+
+bitácora de logins y logouts
+base para futuras mejoras
