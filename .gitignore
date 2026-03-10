@@ -22,22 +22,8 @@ Thumbs.db
 # Logs
 #############################
 
-logs/
 *.log
 
-#############################
-# CodeIgniter logs
-#############################
-
-application/logs/*
-!application/logs/index.html
-
-#############################
-# CodeIgniter cache
-#############################
-
-application/cache/*
-!application/cache/index.html
 
 #############################
 # Sessions (si cambias sess_save_path)
