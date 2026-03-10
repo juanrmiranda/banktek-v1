@@ -40,8 +40,6 @@
 		<?php
 		}
 		?>
-		<!-- /.row -->
-		<?php include 'bookmarks/bookmarks_list.php' ?>
-	</div><!-- /.container-fluid -->
+		
+	</div>
 </div>
-<!-- /.content -->
