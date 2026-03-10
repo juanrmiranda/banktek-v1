@@ -1,0 +1,8 @@
+@page {size:letter landscape !important}
+body {font-size: 12px !important;}
+h4{font-size: 17px !important;}
+h5{font-size: 15px !important;}
+.table-head {margin-bottom: 0.5rem;}    
+.table-head h4 {line-height: 0.5em !important; margin-bottom: 0px;}    
+.table-head h5 {line-height: 0.5em !important; margin-bottom: 0px;}   
+.idreporte{line-height: 0.5em !important;}

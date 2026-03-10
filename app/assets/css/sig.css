@@ -1,0 +1,34 @@
+.small, small {font-size: 70%;}
+.help-block {color: #dd4b39;font-size: .875rem!important;}
+.input-no-border{border-top: 0;border-left: 0;border-right: 0;border-radius: 0;box-shadow: inherit; background-color: white;}
+.form-control:disabled,.form-control[readonly]{background-color:#f8f9fa;opacity:1}
+.table td.fit, .table th.fit {white-space: nowrap;width: 1%;}
+.table>thead>tr>th{color: #6c757d !important;}
+.last-col-right>tbody>tr>td:last-child {text-align: right;}
+.last-col-right>thead>tr>th:last-child {text-align: right;}
+.sig-spinner{max-height: 33px;}
+.font-sm {font-size: 85%;}
+.font-xs {font-size: 70%;}
+.changeicon-gethand:hover .fa-hand-paper:before{content:"\f255";}
+.divider>dt{color: #17a2b8;}
+.divider{margin-bottom: 0.5rem;}
+.dropdown-divider{border-top: 1px solid #17a2b8; margin-bottom: 1rem;}
+.input-lbl>p{margin-top: 2px !important; margin-bottom: 0px; font-size: 0.875rem !important; color: #6c757d !important; font-weight: bolder !important;}
+.input-lbl>.d-block{margin-top: 5px !important; border-bottom: 1px solid #ced4da; padding-bottom: 0 !important; font-weight: 400 !important;}
+.nav-existencias{display: block; padding-left: 0.25rem;}
+#detalle_existencias_articulo>li{border-bottom: 1px solid rgba(0,0,0,.125);}
+.form-control-xl {height: calc(6.25rem + 2px);padding: 0.5rem 1rem;font-size: 5.25rem;line-height: 2.5;border-radius: 0.3rem;}
+.toast-message{font-size: 1rem;}
+.sig-label{margin-bottom: 0px; font-size: 0.9rem !important; color: #6c757d !important; font-weight: bolder !important;}
+.sig-input{padding: 0 !important; height: calc(1.5rem + 2px) !important;}
+.sig-input-select{padding: 0 !important; height: calc(1.5rem + 1px) !important;}
+.sig-form-group{margin-bottom: 0.5rem !important;}
+.sig-color-gray{color: #6c757d !important;}
+.sig-option{padding-left: 0.75rem !important;}
+.first-col-right>tbody>tr>td:first-child{width: 1%;white-space: nowrap;}
+.first-col-right>thead>tr>th:first-child{width: 1%;white-space: nowrap;}
+input[type="date"].is-invalid  { background-position: right calc(1em + 0.1875rem) center;}
+form.is-submitting button[type="submit"]::before{position:absolute;content:'';height:.05em;left:0;right:0;top:0;background:green;animation:move-input 1s linear infinite}
+@keyframes move-input{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.swal2-textarea{margin: auto !important; width: 100% !important;}
+@media (max-width:991px) {.lb-sm-none{border:0px solid !important}}

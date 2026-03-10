@@ -1,0 +1,25 @@
+@page {size:letter portrait}
+
+section.pagina {page-break-after: always; margin-left: 20px !important;}
+.table th {padding: 0.25em !important;}    
+.table td {padding: 0.25em !important;}    
+.table-head tr {border-spacing: 0px;}    
+.table-head td {padding: 0px !important; font-weight: normal; vertical-align: middle;}    
+.table-head h4 {line-height: 1em !important; margin-bottom: 0px;}    
+.table-head h5 {line-height: 1em !important; margin-bottom: 0px;}    
+.idreporte{font-size: 80%; line-height: 1.1em; vertical-align: middle !important;}
+.sigpyme-error p {font-size: 28px !important;}
+.sigpyme-error pre {font-size: 28px !important;}
+.bg-gray{ color: black !important;}
+.error-file{display: none !important;}
+.error-line{display: none !important;}
+.error-title{display: none !important;}
+.table-xs td, .table-xs th {padding: 0rem !important; font-size: 13px !important;}
+.font-small td, .font-small th {font-size: 10px !important;}
+.no-padding td, .no-padding th {padding: 0rem !important;}
+.error-content:before {content: 'ERROR AL GENERAR EL DOCUMENTO';font-size: 20px !important;}
+.div-header, .div-header-space {height: 100px;}
+.div-footer, .div-footer-space {height: 30px;}
+.div-footer {position: fixed;bottom: 0;width: 100%;border-top: 1px solid black;background: yellow;}
+.div-header {position: fixed;top: 0mm;width: 100%;}
+.div-tarjeta{display: block !important;padding-top: 140px !important;width:730px;max-width:730px; font-weight: 700 !important; font-size: 16px !important; font-family:Arial, Helvetica, sans-serif;}

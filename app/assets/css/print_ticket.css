@@ -1,0 +1,191 @@
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  body {
+    margin: 0;
+  }
+  main {
+    display: block;
+  }
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+  }
+  pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  small {
+    font-size: 80%;
+  }
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  img {
+    border-style: none;
+  }
+  
+  details {
+    display: block;
+  }
+  summary {
+    display: list-item;
+  }
+  template {
+    display: none;
+  }
+  [hidden] {
+    display: none;
+  }
+
+* {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+tr,td,th,table{border-collapse: collapse; border-spacing: 0px;}
+.factura{display: block !important;padding-left:15px;padding-top: 0px;width:560px;max-width:560px;}
+div.tabla_factura{display: block !important; height: 200px; margin-top: 30px; font-size: 8px !important;}
+div.tabla_consumidor_final_v2{display: block !important; height: 200px; margin-top: 20px; font-size: 8px !important;}
+.comprobante{display: block !important;padding:10px;width:270px;max-width:270px; }
+.consumidor{display: block !important;padding-left:30px;padding-top: 60px;width:560px;max-width:560px;}
+.credito_fiscal{display: block !important;padding-left:30px;padding-top: 60px;width:620px;max-width:620px;}
+div.tabla_credito_fiscal{display: block !important; height: 400px; margin-top: 20px; font-size: 8px !important;}
+div.tabla_consumidor{display: block !important; height: 190px; margin-top: 35px;}
+tr.trx{border: none !important;font-size: 14px !important;}
+td.trx_label{width:80px; max-width:80px;word-break:break-all;border: none !important;font-size: 14px !important;}
+td.trx_value{width:190px; max-width:190px;word-break:break-all;border: none !important;font-size: 14px !important;}
+table.tbl_trx{border: none !important;font-size: 14px !important;}
+td,th,tr,table{border-top:1px solid black}
+button{display: none !important;}
+.small{font-size: 14px !important;}
+.mayuscula{text-transform: uppercase !important; }
+.negrita{font-weight: bolder;}
+.mt-1{margin-top: 10px;}
+.mt-2{margin-top: 20px;}
+.center {text-align: center;align-content: center;}
+.left {text-align: left;align-content: left;}
+.right {text-align: right;align-content: right;}
+.sigpyme-error p {font-size: 28px !important;}
+.sigpyme-error pre {font-size: 28px !important;}
+.error-file{display: none !important;}
+.error-line{display: none !important;}
+.error-title{display: none !important;}
+.error-content:before{content:'ERROR AL GENERAR EL DOCUMENTO';font-size:20px!important}
+.nota{border-top: 1px dashed; border-bottom: 1px dashed; padding-top: 10px; padding-bottom: 10px;}
+/* TABLA PARA TICKETS */
+table.tbl_venta_detalle{border: none !important;font-size: 14px !important;}
+table.tbl_venta_detalle>thead>tr{border-bottom: 1px dashed; border-top: none;vertical-align: top;}
+table.tbl_venta_detalle>thead>tr>th{border-bottom: 1px solid; font-weight: normal; text-align: left;vertical-align: top;}
+table.tbl_venta_detalle>tbody>tr{border: none !important;vertical-align: top;}
+table.tbl_venta_detalle>tbody>tr>td{border: none !important;vertical-align: top;}
+/* ------ */
+/* TABLA PARA FACTURA COMERCIAL */
+table.tbl_factura_comercial{border: none !important; line-height: 1.5rem;}
+table.tbl_factura_comercial>thead>tr{border-bottom: none; border-top: none; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial>tbody>tr{border: none !important; vertical-align: top; font-size: 12px !important;} 
+table.tbl_factura_comercial>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial td:first-child  { width: 20px; }
+table.tbl_factura_comercial td:nth-child(2) { width: 190px; }
+table.tbl_factura_comercial td:nth-child(3) { width: 60px; }
+table.tbl_factura_comercial td:nth-child(4) { width: 40px; }
+table.tbl_factura_comercial td:last-child   { width: 70px; }
+table.tbl_factura_comercial_v2{border: none !important; line-height: 1.5rem;}
+table.tbl_factura_comercial_v2>thead>tr{border-bottom: none; border-top: none; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial_v2>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial_v2>tbody>tr{border: none !important; vertical-align: top; font-size: 12px !important;} 
+table.tbl_factura_comercial_v2>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 12px !important;}
+table.tbl_factura_comercial_v2 td:first-child  { width: 20px; }
+table.tbl_factura_comercial_v2 td:nth-child(2) { width: 180px; }
+table.tbl_factura_comercial_v2 td:nth-child(3) { width: 50px; }
+table.tbl_factura_comercial_v2 td:nth-child(4) { width: 25px; }
+table.tbl_factura_comercial_v2 td:last-child   { width: 70px; }
+/* TOTALES FACTURA COMERCIAL */
+table.tbl_totales_factura_comercial{border: none !important; line-height: 1rem !important; padding-top: 10px !important;}
+table.tbl_totales_factura_comercial>thead>tr{border-bottom: none; border-top: none; vertical-align: top;  font-size: 12px !important;}
+table.tbl_totales_factura_comercial>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;  font-size: 12px !important;}
+table.tbl_totales_factura_comercial>tbody>tr{border: none !important; vertical-align: top; font-size: 12px !important;} 
+table.tbl_totales_factura_comercial>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 12px !important;}
+table.tbl_totales_factura_comercial td:first-child  { width: 20px; }
+table.tbl_totales_factura_comercial td:nth-child(2) { width: 180px; }
+table.tbl_totales_factura_comercial td:nth-child(3) { width: 50px; }
+table.tbl_totales_factura_comercial td:nth-child(4) { width: 25px; }
+table.tbl_totales_factura_comercial td:last-child   { width: 70px; }
+/* ------ */
+/* TABLA PARA CONSUMIDOR FINAL */
+table.tbl_consumidor_final{border: none !important;font-size: 12px !important; line-height: 1.5rem;}
+table.tbl_consumidor_final>thead>tr{border-bottom: none; border-top: none; vertical-align: top;}
+table.tbl_consumidor_final>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;}
+table.tbl_consumidor_final>tbody>tr{border: none !important; vertical-align: top;}
+table.tbl_consumidor_final>tbody>tr>td{border: none !important; vertical-align: top;}
+table.tbl_consumidor_final td:first-child  { width: 50px; }
+table.tbl_consumidor_final td:nth-child(2) { width: 450px; }
+table.tbl_consumidor_final td:nth-child(3) { width: 60px; }
+table.tbl_consumidor_final td:last-child   { width: 70px; }
+/* TABLA CREDITO FISCAL */
+table.tblhead_credito_fiscal{border: none !important; line-height: 1rem;}
+table.tblhead_credito_fiscal>tbody>tr{border: none !important; vertical-align: top; font-size: 14px !important;} 
+table.tblhead_credito_fiscal>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 14px !important;}
+table.tblhead_credito_fiscal td:first-child  { width: 220px;}
+table.tblhead_credito_fiscal td:nth-child(2) { width: 100px; }
+table.tblhead_credito_fiscal td:nth-child(3) { width: 50px; }
+table.tblhead_credito_fiscal td:last-child   { width: 230px; }
+
+table.tbl_credito_fiscal{border: none !important; line-height: 1.5rem;}
+table.tbl_credito_fiscal>thead>tr{border-bottom: none; border-top: none; vertical-align: top;  font-size: 14px !important;}
+table.tbl_credito_fiscal>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;  font-size: 14px !important;}
+table.tbl_credito_fiscal>tbody>tr{border: none !important; vertical-align: top; font-size: 14px !important;} 
+table.tbl_credito_fiscal>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 14px !important;}
+table.tbl_credito_fiscal td:first-child  { width: 20px; }
+table.tbl_credito_fiscal td:nth-child(2) { width: 370px; }
+table.tbl_credito_fiscal td:nth-child(3) { width: 70px; }
+table.tbl_credito_fiscal td:nth-child(4) { width: 20px; }
+table.tbl_credito_fiscal td:last-child   { width: 90px; }
+
+table.tbltotales_credito_fiscal{border: none !important; line-height: 1.5rem;}
+table.tbltotales_credito_fiscal>thead>tr{border-bottom: none; border-top: none; vertical-align: top;  font-size: 14px !important;}
+table.tbltotales_credito_fiscal>thead>tr>th{border-bottom: none; font-weight: normal; text-align: left; vertical-align: top;  font-size: 14px !important;}
+table.tbltotales_credito_fiscal>tbody>tr{border: none !important; vertical-align: top; font-size: 14px !important;} 
+table.tbltotales_credito_fiscal>tbody>tr>td{border: none !important; vertical-align: top;  font-size: 14px !important;}
+table.tbltotales_credito_fiscal td:first-child  { width: 430px; }
+table.tbltotales_credito_fiscal td:nth-child(2) { width: 80px; }
+table.tbltotales_credito_fiscal td:last-child   { width: 90px; }
+/* ------ */
+/* ------ */
+.bg-gray{ color: black !important;}
+td.desc,th.desc{width:75px;max-width:75px}
+td.cant,th.cant{width:40px;max-width:40px;word-break:break-all}
+td.monto,th.monto{width:40px;max-width:40px;word-break:break-all}
+td.desc2,th.desc2{width:85%;word-break:break-word;border: none !important}
+td.cant2,th.cant2{width:15%;border: none !important}
+td.desc3,th.desc3{width:80%;word-break:break-word;border: none !important}
+td.cant3,th.cant3{width:10%;border: none !important}
+td.monto3,th.monto3{width:10%;border: none !important}
