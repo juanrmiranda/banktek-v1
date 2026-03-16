@@ -2,6 +2,7 @@ services:
   web:
     image: nginx:1.27-alpine
     container_name: core_web
+    restart: unless-stopped
     environment:
       TZ: America/El_Salvador    
     ports:
@@ -18,8 +19,7 @@ services:
       interval: 30s
       timeout: 5s
       retries: 5      
-      start_period: 10s
- 
+      start_period: 10s 
     networks:
       - frontend_net
 
@@ -28,6 +28,7 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     container_name: core_app
+    restart: unless-stopped
     environment:
       TZ: America/El_Salvador
     working_dir: /var/www/html
@@ -44,6 +45,7 @@ services:
   db:
     image: postgres:17-alpine
     container_name: core_db
+    restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -51,7 +53,7 @@ services:
       TZ: ${TZ}
       PGTZ: ${TZ}
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -67,8 +69,13 @@ services:
     build:
       context: ./docker/logrotate
     container_name: core_logrotate
+    restart: unless-stopped
     volumes:
       - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - web    
+    networks:
+      - backend_net 
 
   # next Node.js para email / score / adjuntos
   # node_ms:
