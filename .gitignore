@@ -53,6 +53,7 @@ docker/postgres/pgdata/
 #############################
 
 *.sql
+!db-updates/*
 *.dump
 *.backup
 

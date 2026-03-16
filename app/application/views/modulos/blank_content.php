@@ -11,7 +11,7 @@
 <div class="content">
 	<div class="container-fluid">
 		<?php
-		if ($this->session->userdata('reinicio_clave') == true) {
+		if ($this->session->userdata('reinicio_clave') === true) {
 		?>
 			<script>
 				Swal.fire({

@@ -49,7 +49,7 @@ class MY_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->Model('crud');
-		// $this->VerifyLogin();
+		$this->VerifyLogin();
 		$this->load->helper('date');
 		$datestring = '%d/%m/%Y - %H:%i:%s';
 		$time = time();
@@ -76,11 +76,6 @@ class MY_Controller extends CI_Controller
 		if ($this->usuario() == 'jramirezmi') {
 			$menu_sistema = $this->sql->read("generales.view_menu_sistema")->result();
 		} else {
-			$fechaActual = date('Y-m-d');
-			$fechaObjetivo = '2024-01-31';
-			if ($fechaActual > $fechaObjetivo) {				
-				throw new Exception("Imposible continuar, No se ha encontrado una licencia válida", 1);
-			}
 			$menu_sistema = $this->sql->query("select * from generales.view_menu_sistema a
 				where exists(select correlativo_opcion from generales.auth_usuarios_modulos_opciones
 					where a.correlativo_opcion=correlativo_opcion
@@ -272,7 +267,7 @@ class MY_Controller extends CI_Controller
 		// crea menu del sistema
 		$menu = "";
 		if ($this->isLogin()) {
-			$menu = $this->create_menu($class);
+			// $menu = $this->create_menu($class);
 		}
 		$var2["menu_dinamico"] = $menu;
 		
@@ -342,7 +337,7 @@ class MY_Controller extends CI_Controller
 		if (!empty($this->usuario())) {
 			$appname = $this->usuario();
 		}
-		$this->crud->simple_query("SET ROLE TO '" . $appname . "'");
+		// $this->crud->simple_query("SET ROLE TO '" . $appname . "'");
 		$this->crud->simple_query("SET application_name TO '" . SISTEMA . "'");
 
 		return true;

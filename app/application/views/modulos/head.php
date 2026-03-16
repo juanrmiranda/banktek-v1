@@ -18,10 +18,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <?= load_css_ext("ionicons") ?>
     <!-- Theme style -->
     <?= load_css_ext("adminlte") ?>
-    <!-- Sig CSS -->
-    <link rel="stylesheet" href="<?= load_css("sig.css") ?>">
+    <!-- CORE CSS -->
+    <link rel="stylesheet" href="<?= load_css("core.css") ?>">
     <link media="print" rel="stylesheet" href="<?= load_css("printing.css") ?>">
-    <!-- Sig Printing -->
+    <!-- CORE Printing -->
     <?= load_js_local("printing") ?>
     <!-- JQuery -->
     <?= load_js_ext("jquery") ?>

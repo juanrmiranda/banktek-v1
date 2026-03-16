@@ -28,8 +28,8 @@ if ($load_datatable) {
 }
 ?>
 
-<!-- SIG App -->
-<?= load_js_local('sig') ?>
+<!-- CORE App -->
+<?= load_js_local('core') ?>
 
 
 <!-- dinamic JS from CTRLs var jsfile-->
