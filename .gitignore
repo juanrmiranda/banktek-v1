@@ -23,7 +23,7 @@ Thumbs.db
 #############################
 
 *.log
-
+*.log.*
 
 #############################
 # Sessions (si cambias sess_save_path)
