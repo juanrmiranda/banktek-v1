@@ -12,7 +12,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= go_to("login", "lockscreen") ?>" class="nav-link"><?= $this->session->userdata('nombre') . " -  " . $this->session->userdata('rol_descripcion') ?> </a>
+                    <a href="<?= go_to("login", "lockscreen") ?>" class="nav-link"><?= $this->session->userdata('nombre') ?> </a>
                 </li>
             </ul>
             <!-- FULL SCREEN -->

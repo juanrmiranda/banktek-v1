@@ -73,15 +73,15 @@ class MY_Controller extends CI_Controller
 	// ----------------------------------------------------------------------------------
 	protected  function create_menu($class)
 	{
-		if ($this->usuario() == 'jramirezmi') {
-			$menu_sistema = $this->sql->read("generales.view_menu_sistema")->result();
-		} else {
+		// if ($this->usuario() == 'jramirezmi') {
+			// $menu_sistema = $this->sql->read("generales.view_menu_sistema")->result();
+		// } else {
 			$menu_sistema = $this->sql->query("select * from generales.view_menu_sistema a
 				where exists(select correlativo_opcion from generales.auth_usuarios_modulos_opciones
 					where a.correlativo_opcion=correlativo_opcion
 					and correlativo_usuario=" . $this->VariableSesion("correlativo") . ")
 				order by 1,5")->result();
-		}
+		// }
 		$modulo = '';
 		$controller = '';
 		$function = '';
@@ -267,7 +267,7 @@ class MY_Controller extends CI_Controller
 		// crea menu del sistema
 		$menu = "";
 		if ($this->isLogin()) {
-			// $menu = $this->create_menu($class);
+			$menu = $this->create_menu($class);
 		}
 		$var2["menu_dinamico"] = $menu;
 		

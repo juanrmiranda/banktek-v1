@@ -845,9 +845,6 @@ CREATE TABLE generales.roles
 
 		INSERT INTO generales.roles(correlativo, descripcion, correlativo_modulos_opciones, nivel_acceso) VALUES (0, 'ROOT', '{9999}',999);
 
-
-
-
 CREATE TABLE generales.usuarios_roles
 (
   correlativo serial NOT NULL,
@@ -879,4 +876,78 @@ CREATE OR REPLACE VIEW generales.usuarios_roles_view AS
   WHERE a.correlativo_roles = b.correlativo AND a.correlativo_usuario = c.correlativo;
 
 
+
+CREATE TABLE generales.modulos
+(
+  correlativo serial NOT NULL,
+  descripcion character varying(50),
+  controller character varying(20),
+  icono character varying(40) NOT NULL DEFAULT 'fas fa-database'::character varying,
+  activo boolean NOT NULL DEFAULT true,
+  CONSTRAINT modulos_pkey PRIMARY KEY (correlativo)
+);
+
+
+INSERT INTO generales.modulos(
+            descripcion, controller, icono)
+    VALUES ('Clientes', 'Clientes', 'fas fa-users');
+
+
+
+CREATE TABLE generales.modulos_opciones
+(
+  correlativo serial NOT NULL,
+  correlativo_modulo integer NOT NULL,
+  descripcion character varying(30),
+  function character varying(30),
+  activo boolean NOT NULL DEFAULT true,
+  CONSTRAINT modulos_opciones_pkey PRIMARY KEY (correlativo),
+  CONSTRAINT modulos_opciones_correlativo_modulo_fkey FOREIGN KEY (correlativo_modulo)
+      REFERENCES generales.modulos (correlativo) MATCH SIMPLE
+      ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT modulos_opciones_correlativo_modulo_function_key UNIQUE (correlativo_modulo, function)
+);
+
+INSERT INTO generales.modulos_opciones(
+            correlativo_modulo, descripcion, function)
+    VALUES (1, 'Listado', 'listado');
+
+INSERT INTO generales.modulos_opciones(
+            correlativo_modulo, descripcion, function)
+    VALUES (1, 'Nuevo', 'nuevo');
+
+    INSERT INTO generales.modulos_opciones(
+            correlativo_modulo, descripcion, function)
+    VALUES (1, 'Consulta', 'query');
+
+CREATE OR REPLACE VIEW generales.view_menu_sistema AS 
+ SELECT b.correlativo AS correlativo_modulo,
+    b.descripcion AS descripcion_modulo,
+    b.controller,
+    b.icono,
+    a.correlativo AS correlativo_opcion,
+    a.descripcion AS descripcion_opcion,
+    a.function,
+    (b.controller::text || '::'::text) || a.function::text AS method,
+    (b.controller::text || '/'::text) || a.function::text AS go_to
+   FROM generales.modulos_opciones a
+     RIGHT JOIN generales.modulos b ON a.correlativo_modulo = b.correlativo
+  WHERE b.activo = true AND a.activo = true
+  ORDER BY b.correlativo, a.correlativo;
+
+
+
+CREATE OR REPLACE VIEW generales.auth_usuarios_modulos_opciones AS 
+ SELECT b.correlativo_usuario,
+    b.correlativo_roles,
+    unnest(a.correlativo_modulos_opciones) AS correlativo_opcion
+   FROM generales.roles a,
+    generales.usuarios_roles b
+  WHERE a.correlativo = b.correlativo_roles;
+
+update generales.usuarios_roles set correlativo_roles=1;
+
+
+		INSERT INTO generales.roles(descripcion, correlativo_modulos_opciones, nivel_acceso) VALUES ( 'EJECUTIVO NEGOCIOS', '{1,2,3}',10);
+  
 

@@ -25,6 +25,7 @@ class Login extends CI_Controller
 				$whois=$this->getIPAddress();
 				$data = array(
 					'usuario'		=> $usuario,
+					'correlativo'		=> $fila->correlativo,
 					'login'			=> TRUE,
 					'nombre'		=> $fila->nombre,
 					'terminal'		=> $whois['ip']
@@ -48,8 +49,8 @@ class Login extends CI_Controller
 	{
 		$data = array('usuario' => $this->session->userdata('usuario'), 'nombre' => $this->session->userdata('nombre'),'load_datatable' => null);
 
-		$this->load->view('modulos\head',$data);
-		$this->load->view('modulos\layout_lockscreen', $data);
+		$this->load->view('modulos/head',$data);
+		$this->load->view('modulos/layout_lockscreen', $data);
 		session_destroy();
 	}
 
