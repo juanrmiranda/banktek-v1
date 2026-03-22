@@ -406,7 +406,7 @@ class MY_Controller extends CI_Controller
 		$var["filas"] = $this->__TablaCrud_CrearRows($controller);
 		$var["titulo"] = $titulo;
 		$this->LoadLayoutHeader($class);
-		$this->load->view('modulos\crud\crud_listado', $var);
+		$this->load->view('modulos/crud/crud_listado', $var);
 		$this->LoadLayoutFooter();
 	}
 	protected function __CreateFooterCrud()

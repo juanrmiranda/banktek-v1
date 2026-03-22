@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends Crud_Controller
+class Usuarios extends MY_Controller
 {
     protected $modelClass = 'Usuario_model';
     protected $baseRoute = 'usuarios';

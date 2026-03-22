@@ -804,7 +804,7 @@ CREATE TRIGGER insert_nuevo_usuario
   EXECUTE PROCEDURE generales.tri_insert_nuevo_usuario();
 
 update generales.usuario u 
-set clave = crypt(codigo_usuario, gen_salt('bf'))
+set clave = crypt(codigo_usuario, gen_salt('bf'));
 
 
 
@@ -840,7 +840,7 @@ CREATE TABLE generales.roles
   correlativo_modulos_opciones integer[],
   nivel_acceso integer, -- nivel de acceso para seguridad...
   activo boolean NOT NULL DEFAULT true
-)
+);
 
 
 		INSERT INTO generales.roles(correlativo, descripcion, correlativo_modulos_opciones, nivel_acceso) VALUES (0, 'ROOT', '{9999}',999);
@@ -857,7 +857,7 @@ CREATE TABLE generales.usuarios_roles
   CONSTRAINT usuarios_roles_correlativo_roles_fkey FOREIGN KEY (correlativo_roles)
       REFERENCES generales.roles (correlativo) MATCH SIMPLE
       ON UPDATE RESTRICT ON DELETE RESTRICT
-)
+);
 
 
 		INSERT INTO generales.usuarios_roles( correlativo_usuario, correlativo_roles) VALUES ( 1, 0);
@@ -945,9 +945,23 @@ CREATE OR REPLACE VIEW generales.auth_usuarios_modulos_opciones AS
     generales.usuarios_roles b
   WHERE a.correlativo = b.correlativo_roles;
 
-update generales.usuarios_roles set correlativo_roles=1;
 
 
 		INSERT INTO generales.roles(descripcion, correlativo_modulos_opciones, nivel_acceso) VALUES ( 'EJECUTIVO NEGOCIOS', '{1,2,3}',10);
-  
 
+
+update generales.usuarios_roles set correlativo_roles=1;
+
+
+ALTER TABLE clientes.cliente RENAME COLUMN cliente TO correlativo;
+
+ALTER TABLE clientes.cliente_natural  RENAME COLUMN id_cliente TO correlativo_cliente;
+
+
+
+create or replace view clientes.clientes_listado as
+select
+   *,
+    to_char(fecha_creacion, 'DD/MM/YYYY HH24:MI:SS') as fecha_creacion_descripcion,
+    estado_registro estado_descripcion
+from clientes.cliente;
